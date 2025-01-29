@@ -35,11 +35,16 @@ Do /help To Know More ❤️</b>'''
     temp = await replyMessage(message , f'<b>Please Wait ...</b>' , reply_markup = None)
     if SHORTENER and not text.split()[1].startswith('code-'):
         if not (SHORTENER_PREMIUM and prem_dict['PREMIUM'].get(str(message.from_user.id))):
-            text_ = "**Here is your link👇**"
+            text_ = '''**👋 ʜᴇʏ ᴛʜᴇʀᴇ
+
+• Your Movie / Series Link is Ready to Watch or Download
+
+✅  Kɪɴᴅʟʏ Cʟɪᴄᴋ ᴏɴ Dᴏᴡɴʟᴏᴀᴅ Bᴜᴛᴛᴏɴ 👇**'''
             temper = 'code-' + (await encoder(text.split(maxsplit=1)[1] , app.username))
             short_link = await short_url(f"https://telegram.me/{app.username}?start={temper}")
             reply_markup = [
-                [ InlineKeyboardButton("Short Link" , url = short_link) , InlineKeyboardButton("Tutorial" , url = HOW_TO_DOWNLOAD)]
+                [ InlineKeyboardButton("📥 DOWNLOAD LINK 📥" , url = short_link) ] , 
+                [ InlineKeyboardButton("Direct Files" , url = "https://t.me/Cultured_Ocean/11") , InlineKeyboardButton("Tutorial" , url = HOW_TO_DOWNLOAD) ]
             ]
             await replyMessage(message , text_ , reply_markup = InlineKeyboardMarkup(reply_markup))
             return await temp.delete()
