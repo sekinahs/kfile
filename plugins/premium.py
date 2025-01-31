@@ -81,7 +81,7 @@ async def addpremium(app , message):
 Also Make Sure User Has Started The Bot !!!`''')
     now = datetime.now(TIME_ZONE)
     end = await calc_end(now , expiry)
-    if not expiry:
+    if not end:
         return await replyMessage(message, "`Provide Correct Expiry ! Supported Expiry Format - h (hours) , d (days) , w (weeks) , m (months) , y (years)`")
     if str(user_id) in prem_dict['PREMIUM']:
         return await replyMessage(message, f"`User Already Premium`")
