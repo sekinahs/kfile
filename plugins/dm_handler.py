@@ -50,7 +50,7 @@ async def other_handles(app , message):
     if CHANNEL_BUTTON:
         await editReplyMarkup(post_msg , reply_markup)
 
-@Client.on_message(filters.command('batchx') & filters.private & filters.user(OWNER))
+@Client.on_message(filters.command('batchx') & filters.private & is_auth)
 async def batchx(app , message):
     async def _ask(text):
         await replyMessage(message , text)
