@@ -49,3 +49,14 @@ for key , value in prem_dict['PREMIUM'].items():
 
 async def prem_sync():
         prem.replace_one({'_id':'premium'},prem_dict)
+
+# REQUESTS USERS
+
+req_col = db['req']
+
+async def add_req(user_id):
+        req_col.replace_one({'_id' : user_id},{'_id' : user_id},  upsert = True)
+
+async def check_req(user_id):
+        req_ = req_col.find_one({'_id' : user_id})
+        return bool(req_)
