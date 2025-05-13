@@ -73,9 +73,9 @@ async def check_fsubs(app , ids):
     if TOGGLE:
         async def is_subscribed_request(client, update , FORCE_SUB_CHANNEL):
             user_id = update
-            for lst in app.PENDING[FORCE_SUB_CHANNEL]:
-                if user_id == lst:
-                    return FORCE_SUB_CHANNEL , True
+            sth = await check_req(update)
+            if sth:
+                return FORCE_SUB_CHANNEL , True
             return await is_subscribed(client , update , FORCE_SUB_CHANNEL)
         tasks = [is_subscribed_request(app , ids , f_id) for f_id in REQUEST_FSUB]
         status = await asyncio.gather(*tasks)

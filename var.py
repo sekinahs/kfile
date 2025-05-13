@@ -42,7 +42,6 @@ FSUB_TIMEOUT = int(os.environ.get('FSUB_TIMEOUT' , '0') or 0)
 TOGGLE = os.environ.get('TOGGLE','False').lower() == 'true'
 REQUEST_FSUB = [int(x) for x in os.environ.get('REQUEST_FSUB','').split()]
 REQUEST_LINKS = [x for x in os.environ.get('REQUEST_LINKS','').split()]
-SESSION = os.environ.get('SESSION','')
 
 # FAKE BUTTON
 FAKE = [i.strip() for i in os.environ.get('FAKE' , '').split(',') if i.strip()]

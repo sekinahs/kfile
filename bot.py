@@ -54,20 +54,7 @@ class Bot(Client):
             if not FSUB_LINKS: self.FSUB[ids] = await generate_invite_link(ids)
             else: self.FSUB[ids] = FSUB_LINKS[index]
 
-        # REQUEST_FSUB
-        if TOGGLE:
-            user = Client('user' , api_id = API_ID , api_hash =API_HASH , session_string = SESSION , no_updates=True)
-            await user.start()
-            self.PENDING = {}
-            for ids in REQUEST_FSUB:
-                self.PENDING[ids] = []
-                link = await generate_invite_link(ids)
-                try: await user.get_chat(ids)
-                except: await user.join_chat(link)
-                lst = []
-                async for user_ in user.get_chat_join_requests(ids):
-                    lst.append(user_.user.id)
-                self.PENDING[ids] = lst
+        
         if os.path.exists('.restartmsg'):
             with open(".restartmsg") as f:
                 chat_id, msg_id = map(int, f)
